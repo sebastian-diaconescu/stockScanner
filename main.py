@@ -4,6 +4,7 @@ app = Flask(__name__)
 @app.route('/test/', methods=['GET'])
 def respond():
     response["MESSAGE"] = f"Welcome {name} to our awesome platform!!"
+    $ heroku ps:scale web=1
     return jsonify(response)
 
 @app.route('/getmsg/', methods=['GET'])
