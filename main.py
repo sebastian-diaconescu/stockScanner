@@ -1,6 +1,11 @@
 from flask import Flask, request, jsonify
 app = Flask(__name__)
 
+@app.route('/test/', methods=['GET'])
+def respond():
+    response["MESSAGE"] = f"Welcome {name} to our awesome platform!!"
+    return jsonify(response)
+
 @app.route('/getmsg/', methods=['GET'])
 def respond():
     # Retrieve the name from url parameter
