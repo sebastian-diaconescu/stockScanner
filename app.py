@@ -3,12 +3,12 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
 
-from .containers import Container
+#from .containers import Container
 from . import views
 
 
 def create_app() -> Flask:
-    #container = Container()    
+    #container = Container()
     #container.wire(modules=[views])
     app = Flask(__name__)
     #app.container = container
