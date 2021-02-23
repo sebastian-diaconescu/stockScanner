@@ -7,10 +7,7 @@ from .containers import Container
 
 
 @inject
-def index(
-        default_query: str = Provide[Container.config.default.query],
-        default_limit: int = Provide[Container.config.default.limit.as_int()],
-):
+def index():
     
 
     return "<h1>Welcome to our server !!</h1>"
