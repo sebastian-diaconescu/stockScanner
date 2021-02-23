@@ -8,6 +8,4 @@ from .containers import Container
 
 @inject
 def index():
-    
-
     return "<h1>Welcome to our server !!</h1>"
