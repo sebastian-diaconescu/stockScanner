@@ -16,9 +16,8 @@ class DBConnection:
             Column('whigh52', Integer),
             Column('ticker', String),
             )
-
         metadata.create_all()
-        return true
+        
 
     def InsertData(self, fundamentalData, ticker):
         conn.execute('INSERT INTO "fundamental" (name) '
