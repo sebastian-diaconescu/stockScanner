@@ -1,20 +1,11 @@
-"""Application module."""
-
-from flask import Flask
-from flask_bootstrap import Bootstrap
-
-from .containers import Container
-from . import views
+from flask import Flask, request, jsonify
+app = Flask(__name__)
 
 
-def create_app() -> Flask:
-    #container = Container()    
-    #container.wire(modules=[views])
-    app = Flask(__name__)
-    #app.container = container
-    app.add_url_rule('/', 'index', views.index)
+@app.route('/')
+def index():
+    return "<h1>Welcome to our server !!</h1>"
 
-    bootstrap = Bootstrap()
-    bootstrap.init_app(app)
-
-    return app
+if __name__ == '__main__':
+    # Threaded option to enable multiple instances for multiple user access support
+    app.run(threaded=True, port=5000)
