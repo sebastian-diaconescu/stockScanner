@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from finviz_service import FinVizHelper
 app = Flask(__name__)
 
 
@@ -8,7 +9,9 @@ def index():
 
 @app.route('/scan/')
 def scanFinvizTicker():
-    return request.args.get('ticker')
+    ticker = request.args.get('ticker')
+    stockFundamental = FinVizHelper().getStockPE();
+    return stockFundamental;
 
 
 if __name__ == '__main__':
