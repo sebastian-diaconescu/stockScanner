@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
 from finviz_service import FinVizHelper
 from database import DBConnection
-app = Flask(__name__)
 
+app = Flask(__name__)
 
 @app.route('/')
 def index():
@@ -12,7 +12,9 @@ def index():
 def scanFinvizTicker():
     ticker = request.args.get('ticker')
     stockFundamental = FinVizHelper().getStockPE(ticker)
-    
+    db = DBConnection()
+    db.createTables()
+    db.InsertData(stockFundamental, ticker)
     return stockFundamental
 
 
