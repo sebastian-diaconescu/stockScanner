@@ -8,7 +8,7 @@ def index():
 
 @app.route('/scan/')
 def scanFinvizTicker():
-    return request.query_string
+    return request.args.get('ticker')
 
 
 
