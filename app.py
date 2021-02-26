@@ -10,7 +10,7 @@ def index():
 @app.route('/scan/')
 def scanFinvizTicker():
     ticker = request.args.get('ticker')
-    stockFundamental = FinVizHelper().getStockPE()
+    stockFundamental = FinVizHelper().getStockPE(ticker)
     return stockFundamental
 
 
