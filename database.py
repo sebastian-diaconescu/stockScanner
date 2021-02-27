@@ -42,6 +42,9 @@ class DBConnection:
         conn = self.engine.connect()
         t = text("SELECT * FROM headline_sentiment")
         result = conn.execute(t)
+        data = []
+        for row in result:
+            data.append(dict(row))
         conn.close()
         return result
 

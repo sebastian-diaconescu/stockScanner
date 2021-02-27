@@ -41,7 +41,9 @@ def loadSentiment():
     db = DBConnection()
     db.createTables()
     db.InsertHeadlineSentiment("Feb-26-21 04:05PM", "test headline", "1hash", "1", "gme")
-    return db.GetTitleByHash("1hash")
+    data = db.GetTitleByHash("1hash")
+    return jsonify(data)
+
     #return "loaded sentiments"
 
 if __name__ == '__main__':
