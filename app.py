@@ -20,7 +20,7 @@ def scanFinvizTicker():
     return stockFundamental
 
 @app.route('/upload-revolut/', methods=['POST'])
-def myroute():
+def loadRevolut():
     flask_file = request.files['file']
     if not flask_file:
         return 'Upload a CSV file'
@@ -37,7 +37,7 @@ def myroute():
     return "Refresh complete"
 
 @app.route('/load-sentiment/', methods['POST'])
-def myroute():
+def loadSentiment():
     ticker = request.args.get('ticker')
     db = DBConnection()
     db.createTables()
