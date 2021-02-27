@@ -1,7 +1,6 @@
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
-
 class SentimentScaner:
     def __init__(self):
         # Instantiate the sentiment intensity analyzer with the existing lexicon
@@ -19,5 +18,5 @@ class SentimentScaner:
 
 
     def GetSentiment(self, title):
-        score = self.vader.polarity_scores(sentence)
+        #score = self.vader.polarity_scores(sentence)
         return 5
