@@ -18,5 +18,5 @@ class SentimentScaner:
 
 
     def GetSentiment(self, title):
-        score = self.vader.polarity_scores(sentence)
+        score = self.vader.polarity_scores(title)
         return score
