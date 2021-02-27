@@ -46,7 +46,7 @@ def loadSentiment():
 
     finvizHelper = FinVizHelper()
     #news = finvizHelper.loadNews("gme")
-    news = mockLoadNews.loadNews("gme")
+    news = finvizHelper.mockLoadNews("gme")
     
     return jsonify(news)
     #return jsonify(data)
