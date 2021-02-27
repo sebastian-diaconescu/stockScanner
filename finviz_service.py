@@ -16,12 +16,16 @@ class FinVizHelper:
         
         response = requests.get(pageURl, headers=headers)
         if (response.status_code != 200):
-            return response.status_code
-            #return "no response from page"
+            return "no response from page " + response.status_code
         
         soup = BeautifulSoup(response.content, 'html.parser')
+        newsTable = soup.find(id="news-table").find_all(tr)
+        allArticles = []
+        for i in range(len(newsTable)):
+            anArticle = newsTable[i].text
+            allArticles.append(anArticle)
 
-        return soup.prettify()      
+        return sallArticles
         
         
         
