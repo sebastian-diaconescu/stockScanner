@@ -43,7 +43,7 @@ class DBConnection:
         t = text("SELECT * FROM headline_sentiment WHERE headline_hash = '"+ headline_hash +"'")
         result = conn.execute(t)
         
-        res = row.first()
+        res = result.first()
         conn.close()
         return res
 
