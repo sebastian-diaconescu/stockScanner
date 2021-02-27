@@ -11,6 +11,7 @@ class DBConnection:
       
     def createTables(self):  
         self.engine.connect()
+        
         metadata = MetaData(self.engine)                 
         Table("fundamental", metadata,
             Column('Id', Integer, primary_key=True, nullable=False), 
@@ -19,7 +20,9 @@ class DBConnection:
             )
 
         #TODO: remove this or extract into a new server method    
-        metadata.drop_all() 
+        
+        base = declarative_base()
+        base.metadata.drop_all(engine, True)
         metadata.create_all()
         
 
