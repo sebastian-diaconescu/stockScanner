@@ -14,7 +14,8 @@ class FinVizHelper:
         pageURl = "https://finviz.com/quote.ashx?t=gme"
         response = requests.get(pageURl)
         if (response.status_code != 200):
-            return "no response from page"
+            return response.status_code
+            #return "no response from page"
         
         soup = BeautifulSoup(response.content, 'html.parser')
 
