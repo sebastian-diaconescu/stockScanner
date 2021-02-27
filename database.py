@@ -38,7 +38,7 @@ class DBConnection:
         "Values ('"+ date + "', '" + headline + "', '" + headline_hash + "', '" + sentiment_score + "', '" + ticker + "')")
         conn.close()
 
-    def GetTitleByHash(headline_hash):
+    def GetTitleByHash(self, headline_hash):
         t = text("SELECT * FROM headline_sentiment")
         result = connection.execute(t)
         return result
