@@ -19,7 +19,7 @@ def scanFinvizTicker():
     db.ClearDatabase()
     return stockFundamental
 
-@app.route('/upload-revolut/', methods=['POST'])
+@app.route('/upload-revolut', methods=['POST'])
 def loadRevolut():
     flask_file = request.files['file']
     if not flask_file:
