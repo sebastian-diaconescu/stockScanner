@@ -9,8 +9,9 @@ class FinVizHelper:
         return fundament
 
     def loadNews(self, ticker):
-        url = "https://finviz.com/quote.ashx?t="
-        page = url + ticker
+        #url = "https://finviz.com/quote.ashx?t="
+        #page = url + ticker
+        page = "https://finviz.com/quote.ashx?t=gme"
         r = requests.get(page)
         soup = BeautifulSoup(r.content, "html.parser")
         
