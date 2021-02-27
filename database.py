@@ -15,18 +15,18 @@ class DBConnection:
         metadata = MetaData(self.engine)                 
         Table("fundamental", metadata,
             Column('Id', Integer, primary_key=True, nullable=False), 
-            Column('whigh52Perc', FLOAT),
+            Column('whigh52perc', FLOAT),
             Column('ticker', String),
             )
 
         metadata.drop_all(self.engine)
-        metadata.create_all()
+        #metadata.create_all()
         
 
     def InsertData(self, fundamentalData, ticker):
         conn = self.engine.connect()
         high52 = fundamentalData["52W High"].replace("%", "")
         
-        conn.execute("INSERT INTO fundamental (whigh52Perc, ticker) VALUES ('"+ high52 +"', '" + ticker + "')")
+        conn.execute("INSERT INTO fundamental (whigh52perc, ticker) VALUES ('"+ high52 +"', '" + ticker + "')")
         # Close connection
         conn.close()
