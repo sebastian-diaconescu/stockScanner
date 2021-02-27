@@ -29,6 +29,7 @@ def myroute():
     for row in csv.reader(stream, dialect=csv.excel):
         if row:
             data.append(row)
+    csvResult = jsonify(data)
     
     db = DBConnection()
     db.InsertRevolutStockData(data)
