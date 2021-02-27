@@ -23,11 +23,11 @@ class DBConnection:
 
         Table("headline_sentiment", metadata,
             Column ("Id", Integer, primary_key=True, nullable=False),
-            Column ("date", DateTime, nullable=False),
+            Column ("date", String, nullable=False),
             Column ("headline", String, nullable=False),
             Column ("headline_hash", String, nullable=False),
             Column ("sentiment_score", FLOAT),
-            Column ("ticker", String)
+            Column ("ticker", String, nullable=False)
         )       
 
         metadata.create_all()
