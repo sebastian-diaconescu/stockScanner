@@ -22,7 +22,7 @@ class DBConnection:
         #TODO: remove this or extract into a new server method    
         
         base = declarative_base()
-        base.metadata.drop_all(self.engine)
+        base.metadata.drop_all(self.engine, checkfirst=False)
         #metadata.create_all()
         
 
