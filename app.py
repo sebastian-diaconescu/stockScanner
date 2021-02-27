@@ -25,15 +25,8 @@ def loadRevolut():
     if not flask_file:
         return 'Upload a CSV file'
     data = []
-    stream = codecs.iterdecode(flask_file.stream, 'utf-8')
-    for row in csv.reader(stream, dialect=csv.excel):
-        if row:
-            data.append(row)
-    #csvResult = jsonify(data)
+ 
     
-    db = DBConnection()
-    db.InsertRevolutStockData(data)
-
     return "Refresh complete"
 
 """
