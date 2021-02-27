@@ -74,12 +74,7 @@ class DBConnection:
         table = metadata.tables.get(table_name)
         if table is not None:
             base.metadata.drop_all(self.engine, [table], checkfirst=True)
-
-
-    
-        
-    
-
+            
     def ClearDatabase(self):
         self.engine.connect()       
         metadata = MetaData(self.engine)                 
