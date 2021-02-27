@@ -46,7 +46,7 @@ class DBConnection:
         for row in result:
             data.append(dict(row))
         conn.close()
-        return result
+        return data
 
     def InsertData(self, fundamentalData, ticker):
         conn = self.engine.connect()
