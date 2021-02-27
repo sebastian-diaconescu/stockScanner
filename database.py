@@ -19,7 +19,6 @@ class DBConnection:
             Column('ticker', String),
             )
 
-        metadata.drop_all(self.engine)
         metadata.create_all()
         
 
@@ -30,3 +29,8 @@ class DBConnection:
         conn.execute("INSERT INTO fundamental (whigh52perc, ticker) VALUES ('"+ high52 +"', '" + ticker + "')")
         # Close connection
         conn.close()
+
+    def ClearDatabase(self):
+        self.engine.connect()       
+        metadata = MetaData(self.engine)                 
+        metadata.drop_all(self.engine)

@@ -15,6 +15,7 @@ def scanFinvizTicker():
     db = DBConnection()
     db.createTables()
     db.InsertData(stockFundamental, ticker)
+    db.ClearDatabase()
     return stockFundamental
 
 
