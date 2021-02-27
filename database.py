@@ -38,7 +38,7 @@ class DBConnection:
         metadata = MetaData(self.engine)      
         revolutTickerTableName = "revolut_tickers"
 
-        metadata.drop_all(self.engine, [revolutTickerTableName])
+        self.drop_table(revolutTickerTableName)
 
         Table(revolutTickerTableName, metadata,
             Column('Id', Integer, primary_key=True, nullable=False), 
@@ -53,6 +53,15 @@ class DBConnection:
             conn.execute("INSERT INTO revolut_tickers (ticker, name) VALUES ('"+ row[1] +"', '" + row[0] + "')")
             pass
         conn.close()
+
+    def drop_table(self, table_name):
+        self.engine.connect()
+        base = declarative_base()
+        metadata = MetaData(self.engine, reflect=True)
+        table = metadata.tables.get(table_name)
+        if table is not None:
+            base.metadata.drop_all(engine, [table], checkfirst=True)
+
 
     def ClearDatabase(self):
         self.engine.connect()       
