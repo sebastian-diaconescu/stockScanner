@@ -22,7 +22,7 @@ class DBConnection:
 
     def InsertData(self, fundamentalData, ticker):
         conn = self.engine.connect()
-        high52 = fundamentalData["52W High"]
+        high52 = float(fundamentalData["52W High"])
         print(high52)
         #conn.execute("INSERT INTO fundamental (whigh52, ticker) VALUES ("+ high52 +", '" + ticker + "')")
         # Close connection
