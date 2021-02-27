@@ -30,6 +30,7 @@ def myroute():
         if row:
             data.append(row)
     
+    db = DBConnection()
     db.InsertRevolutStockData(data)
 
     return csvResult
