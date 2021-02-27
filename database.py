@@ -19,6 +19,7 @@ class DBConnection:
             Column('ticker', String),
             )
 
+        metadata.drop_all(self.engine)
         #TODO: remove this or extract into a new server method    
         
         base = declarative_base()
