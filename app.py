@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from finviz_service import FinVizHelper
 from database import DBConnection
+from sentiment_scanner import SentimentScaner
 import csv
 import codecs
 app = Flask(__name__)
@@ -47,8 +48,21 @@ def loadSentiment():
     finvizHelper = FinVizHelper()
     #news = finvizHelper.loadNews("gme")
     news = finvizHelper.mockLoadNews("gme")
-    
-    return jsonify(news)
+    data = []
+    sentimentScaner = SentimentScaner()
+    for story in news:
+        
+        split = story.split("  ")
+        date = split[0]
+        title = split[1]
+        res = {"date":date, "title": title, "score": "", "ticker":ticker }
+        
+        res["score"] = sentimentScaner.GetSentiment(title)
+
+        data.append(res)
+        pass
+
+    return jsonify(data)
     #return jsonify(data)
 
     #return "loaded sentiments"
