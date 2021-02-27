@@ -19,7 +19,7 @@ class FinVizHelper:
             return "no response from page " + response.status_code
         
         soup = BeautifulSoup(response.content, 'html.parser')
-        newsTable = soup.find(id="news-table").find_all(tr)
+        newsTable = soup.find(id="news-table").find_all("tr")
         allArticles = []
         for i in range(len(newsTable)):
             anArticle = newsTable[i].text
