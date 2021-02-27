@@ -23,7 +23,7 @@ class DBConnection:
         
         base = declarative_base()
         base.metadata.drop_all(self.engine)
-        metadata.create_all()
+        #metadata.create_all()
         
 
     def InsertData(self, fundamentalData, ticker):
