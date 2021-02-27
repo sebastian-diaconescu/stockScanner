@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return "<h1>Welcome to our server !!</h1>"
-
+"""
 @app.route('/load-fundamentals/', methods=['POST'])
 def scanFinvizTicker():
     ticker = request.args.get('ticker')
@@ -18,7 +18,7 @@ def scanFinvizTicker():
     db.InsertData(stockFundamental, ticker)
     db.ClearDatabase()
     return stockFundamental
-
+"""
 @app.route('/upload-revolut/', methods=['POST'])
 def loadRevolut():
     flask_file = request.files['file']
@@ -35,7 +35,7 @@ def loadRevolut():
     db.InsertRevolutStockData(data)
 
     return "Refresh complete"
-
+"""
 @app.route('/load-sentiment/', methods=['POST'])
 def loadSentiment():
     ticker = request.args.get('ticker')
@@ -43,7 +43,7 @@ def loadSentiment():
     db.createTables()
     db.InsertHeadlineSentiment("Feb-26-21 04:05PM", "test headline", "1hash", 1, "gme")
     return "loaded sentiments"
-
+"""
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
     app.run(threaded=True, port=5000)
