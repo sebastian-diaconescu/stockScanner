@@ -1,6 +1,22 @@
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
 
-
+new_words = {
+    'crushes': 10,
+    'beats': 5,
+    'misses': -5,
+    'trouble': -10,
+    'falls': -100,
+}
 class SentimentScaner:
-    
+    def __init__(self):
+        # Instantiate the sentiment intensity analyzer with the existing lexicon
+        self.vader = SentimentIntensityAnalyzer()
+        # Update the lexicon
+        self.vader.lexicon.update(new_words)
+
+
     def GetSentiment(self, title):
-        return 5
+        score = self.vader.polarity_scores(sentence)
+        return score
