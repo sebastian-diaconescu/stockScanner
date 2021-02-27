@@ -22,8 +22,7 @@ class DBConnection:
 
     def InsertData(self, fundamentalData, ticker):
         conn = self.engine.connect()
-        conn.execute('INSERT INTO "fundamental" (whigh52, ticker) '
-             'VALUES ("test", "test")')
+        conn.execute("INSERT INTO fundamental (whigh52, ticker) VALUES (10, 'gme')")
         trans.commit()
         # Close connection
         conn.close()

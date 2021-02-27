@@ -14,7 +14,7 @@ def scanFinvizTicker():
     stockFundamental = FinVizHelper().getStockPE(ticker)
     db = DBConnection()
     db.createTables()
-    #db.InsertData(stockFundamental, ticker)
+    db.InsertData(stockFundamental, ticker)
     return stockFundamental
 
 
