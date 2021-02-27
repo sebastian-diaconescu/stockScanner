@@ -9,7 +9,7 @@ app = Flask(__name__)
 def index():
     return "<h1>Welcome to our server !!</h1>"
 
-@app.route('/scan/')
+@app.route('/load-fundamentals/', methods=['POST'])
 def scanFinvizTicker():
     ticker = request.args.get('ticker')
     stockFundamental = FinVizHelper().getStockPE(ticker)
@@ -19,7 +19,7 @@ def scanFinvizTicker():
     db.ClearDatabase()
     return stockFundamental
 
-@app.route('/uploadrevolut', methods=['POST'])
+@app.route('/upload-revolut', methods=['POST'])
 def myroute():
     flask_file = request.files['file']
     if not flask_file:
@@ -35,6 +35,14 @@ def myroute():
     db.InsertRevolutStockData(data)
 
     return "Refresh complete"
+
+@app.route('/load-sentiment/', methods['POST'])
+def myroute():
+    ticker = request.args.get('ticker')
+    db = DBConnection()
+    db.createTables()
+    db.InsertHeadlineSentiment("Feb-26-21 04:05PM", "test headline", "1hash", 1, "gme")
+    return "loaded sentiments"
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support

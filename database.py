@@ -2,8 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy import MetaData
 from sqlalchemy import Table
 from sqlalchemy import Column
-from sqlalchemy import Integer, String, FLOAT
+from sqlalchemy import Integer, String, FLOAT, DateTime
 from sqlalchemy.ext.declarative import declarative_base
+
 
 class DBConnection:
     def __init__(self):      
@@ -12,6 +13,7 @@ class DBConnection:
     def createTables(self):  
         self.engine.connect()
         
+
         metadata = MetaData(self.engine)                 
         Table("fundamental", metadata,
             Column('Id', Integer, primary_key=True, nullable=False), 
@@ -19,10 +21,22 @@ class DBConnection:
             Column('ticker', String),
             )
 
-        
+        Table("headline_sentiment", metadata,
+            Column ("Id", Integer, primary_key=True, nullable=False),
+            Column ("date", DateTime, nullable=False),
+            Column ("headline", String, nullable=False),
+            Column ("headline_hash", String, nullable=False),
+            Column ("sentiment_score", FLOAT),
+            Column ("ticker", String)
+        )       
 
         metadata.create_all()
         
+    def InsertHeadlineSentiment(self, date, headline, headline_hash, sentiment_score, ticker):
+        conn = self.engine.connect()
+        conn.execute("INSERT INTO headline_sentiment (date, headline, headline_hash, sentiment_score, ticker)" + 
+        "Values ("+ date + ", " + headline + ", " + headline_hash + ", " + sentiment_score + ", " + ticker + ")")
+        conn.close()
 
     def InsertData(self, fundamentalData, ticker):
         conn = self.engine.connect()
@@ -31,7 +45,6 @@ class DBConnection:
         conn.execute("INSERT INTO fundamental (whigh52perc, ticker) VALUES ('"+ high52 +"', '" + ticker + "')")
         # Close connection
         conn.close()
-
 
     def InsertRevolutStockData(self, data):
         self.engine.connect()       
@@ -62,6 +75,10 @@ class DBConnection:
         if table is not None:
             base.metadata.drop_all(self.engine, [table], checkfirst=True)
 
+
+    
+        
+    
 
     def ClearDatabase(self):
         self.engine.connect()       
