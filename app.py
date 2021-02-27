@@ -45,8 +45,9 @@ def loadSentiment():
     data = db.GetTitleByHash("1has2h")
 
     finvizHelper = FinVizHelper()
-    news = finvizHelper.loadNews("gme")
-
+    #news = finvizHelper.loadNews("gme")
+    news = mockLoadNews.loadNews("gme")
+    
     return jsonify(news)
     #return jsonify(data)
 
