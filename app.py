@@ -35,7 +35,7 @@ def loadRevolut():
     db.InsertRevolutStockData(data)
     return "Refresh complete"
 
-@app.route('/load-sentiment/', methods=['POST'])
+@app.route('/load-sentiment', methods=['POST'])
 def loadSentiment():
     ticker = request.args.get('ticker')
     db = DBConnection()
