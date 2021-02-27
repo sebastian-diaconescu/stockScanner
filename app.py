@@ -36,7 +36,7 @@ def loadRevolut():
 
     return "Refresh complete"
 
-@app.route('/load-sentiment/', methods['POST'])
+@app.route('/load-sentiment/', methods=['POST'])
 def loadSentiment():
     ticker = request.args.get('ticker')
     db = DBConnection()
