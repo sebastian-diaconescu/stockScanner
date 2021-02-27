@@ -12,7 +12,9 @@ class FinVizHelper:
         #url = "https://finviz.com/quote.ashx?t="
         #page = url + ticker
         pageURl = "https://finviz.com/quote.ashx?t=gme"
-        response = requests.get(pageURl)
+        headers={'User-Agent': 'Mozilla/5.0'}
+        
+        response = requests.get(pageURl, headers=headers)
         if (response.status_code != 200):
             return response.status_code
             #return "no response from page"
