@@ -13,10 +13,7 @@ class FinVizHelper:
         #page = url + ticker
         page = "https://finviz.com/quote.ashx?t=gme"
         r = requests.get(page)
-        soup = BeautifulSoup(r.content, "html.parser")
-        
-        newsTable = soup.find(id="news-table")
-        
-        return newsTable.text()
 
+        return r.content
+        
         
