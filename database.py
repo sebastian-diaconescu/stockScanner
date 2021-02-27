@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy import MetaData
 from sqlalchemy import Table
 from sqlalchemy import Column
-from sqlalchemy import Integer, String, FLOAT, DateTime
+from sqlalchemy import Integer, String, FLOAT, DateTime, text
 from sqlalchemy.ext.declarative import declarative_base
 
 
