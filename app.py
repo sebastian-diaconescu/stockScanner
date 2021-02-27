@@ -1,7 +1,8 @@
 from flask import Flask, request, jsonify
 from finviz_service import FinVizHelper
 from database import DBConnection
-
+import csv
+import codecs
 app = Flask(__name__)
 
 @app.route('/')
@@ -18,6 +19,17 @@ def scanFinvizTicker():
     db.ClearDatabase()
     return stockFundamental
 
+@app.route('/uploadrevolut', methods=['POST'])
+def myroute():
+    flask_file = request.files['file']
+    if not flask_file:
+        return 'Upload a CSV file'
+    data = []
+    stream = codecs.iterdecode(flask_file.stream, 'utf-8')
+    for row in csv.reader(stream, dialect=csv.excel):
+        if row:
+            data.append(row)
+    return jsonify(data)
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
