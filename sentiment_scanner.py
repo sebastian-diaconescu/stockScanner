@@ -12,6 +12,7 @@ class SentimentScaner:
             'misses': -5,
             'trouble': -10,
             'falls': -100,
+            'gains':100
         }
 
         self.vader.lexicon.update(new_words)
