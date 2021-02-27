@@ -1,4 +1,4 @@
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from vaderSentiment import SentimentIntensityAnalyzer
 
 
 class SentimentScaner:
