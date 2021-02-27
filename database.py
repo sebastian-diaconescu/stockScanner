@@ -3,7 +3,7 @@ from sqlalchemy import MetaData
 from sqlalchemy import Table
 from sqlalchemy import Column
 from sqlalchemy import Integer, String, FLOAT
-
+from sqlalchemy.ext.declarative import declarative_base
 
 class DBConnection:
     def __init__(self):      
