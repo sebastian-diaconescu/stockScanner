@@ -11,9 +11,14 @@ class FinVizHelper:
     def loadNews(self, ticker):
         #url = "https://finviz.com/quote.ashx?t="
         #page = url + ticker
-        page = "https://finviz.com/quote.ashx?t=gme"
-        r = requests.get(page)
+        pageURl = "https://finviz.com/quote.ashx?t=gme"
+        response = requests.get(pageURl)
+        if (response.status_code != 200):
+            return "no response from page"
+        
+        soup = BeautifulSoup(response.content, 'html.parser')
 
-        return r.content
+        return soup.prettify()      
+        
         
         
