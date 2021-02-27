@@ -21,8 +21,8 @@ class SentimentScaner:
     def GetSentiment(self, title):
         score = self.vader.polarity_scores(title)
         if score["neg"] > score['pos']:
-            return 1
+            return -1
         elif score["neg"] == score["pos"]:
             return 0
         else:
-            return -1
+            return 1
