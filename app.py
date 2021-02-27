@@ -20,9 +20,8 @@ def scanFinvizTicker():
     return stockFundamental
 
 @app.route('/upload-revolut/', methods=['POST'])
-def revolut():
-    return "res"
-""" flask_file = request.files['file']
+def loadRevolut():
+    flask_file = request.files['file']
     if not flask_file:
         return 'Upload a CSV file'
     data = []
@@ -33,9 +32,10 @@ def revolut():
     #csvResult = jsonify(data)
     
     db = DBConnection()
-    db.InsertRevolutStockData(data) """
+    db.InsertRevolutStockData(data)
 
-    #return "Refresh complete"
+    return "Refresh complete"
+
 """
 @app.route('/load-sentiment/', methods=['POST'])
 def loadSentiment():
