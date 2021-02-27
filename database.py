@@ -42,11 +42,10 @@ class DBConnection:
         conn = self.engine.connect()
         t = text("SELECT * FROM headline_sentiment")
         result = conn.execute(t)
-        data = []
-        for row in result:
-            data.append(dict(row))
+        
+        res = row.first()
         conn.close()
-        return data
+        return res
 
     def InsertData(self, fundamentalData, ticker):
         conn = self.engine.connect()
