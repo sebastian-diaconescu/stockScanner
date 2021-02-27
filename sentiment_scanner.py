@@ -1,6 +1,5 @@
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-import warnings
-warnings.filterwarnings("ignore", category=FutureWarning)
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+
 
 new_words = {
     'crushes': 10,
