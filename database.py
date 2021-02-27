@@ -38,6 +38,11 @@ class DBConnection:
         "Values ('"+ date + "', '" + headline + "', '" + headline_hash + "', '" + sentiment_score + "', '" + ticker + "')")
         conn.close()
 
+    def GetTitleByHash(headline_hash):
+        t = text("SELECT * FROM headline_sentiment")
+        result = connection.execute(t)
+        return result
+
     def InsertData(self, fundamentalData, ticker):
         conn = self.engine.connect()
         high52 = fundamentalData["52W High"].replace("%", "")
