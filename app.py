@@ -22,7 +22,7 @@ def scanFinvizTicker():
 @app.route('/upload-revolut/', methods=['POST'])
 def loadRevolut():
     return "res"
-   """ flask_file = request.files['file']
+""" flask_file = request.files['file']
     if not flask_file:
         return 'Upload a CSV file'
     data = []
