@@ -20,7 +20,7 @@ def scanFinvizTicker():
     return stockFundamental
 """
 @app.route('/upload-revolut/', methods=['POST'])
-def loadRevolut():
+def revolut():
     return "res"
 """ flask_file = request.files['file']
     if not flask_file:
