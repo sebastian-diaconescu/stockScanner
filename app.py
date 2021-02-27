@@ -35,8 +35,6 @@ def loadRevolut():
     db.InsertRevolutStockData(data)
     return "Refresh complete"
 
-
-"""
 @app.route('/load-sentiment/', methods=['POST'])
 def loadSentiment():
     ticker = request.args.get('ticker')
@@ -44,7 +42,7 @@ def loadSentiment():
     db.createTables()
     db.InsertHeadlineSentiment("Feb-26-21 04:05PM", "test headline", "1hash", 1, "gme")
     return "loaded sentiments"
-"""
+
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
     app.run(threaded=True, port=5000)
