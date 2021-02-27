@@ -40,7 +40,7 @@ class DBConnection:
 
     def GetTitleByHash(self, headline_hash):
         conn = self.engine.connect()
-        t = text("SELECT * FROM headline_sentiment")
+        t = text("SELECT * FROM headline_sentiment WHERE headline_hash = '"+ headline_hash +"'")
         result = conn.execute(t)
         
         res = row.first()
