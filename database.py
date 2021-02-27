@@ -25,8 +25,8 @@ class DBConnection:
 
     def InsertData(self, fundamentalData, ticker):
         conn = self.engine.connect()
-        high52 = float(fundamentalData["52W High"].replace("%", ""))
-        print(high52)
+        high52 = fundamentalData["52W High"].replace("%", "")
+        
         conn.execute("INSERT INTO fundamental (whigh52, ticker) VALUES ('"+ high52 +"', '" + ticker + "')")
         # Close connection
         conn.close()
