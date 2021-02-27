@@ -13,7 +13,10 @@ class FinVizHelper:
         page = url + ticker
         r = requests.get(page)
         soup = BeautifulSoup(r.content, "html.parser")
-        articleSoup = soup.find_all("a", {"class": "tab-link-news"})
+        
+        newsTable = soup.find('table', id="news-table")
+        articleSoup = newsTable.findAll('tr')
+        
         allArticles = []
         for i in range(len(articleSoup)):
             anArticle = articleSoup[i].text
