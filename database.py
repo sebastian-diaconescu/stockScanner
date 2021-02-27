@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy import MetaData
 from sqlalchemy import Table
 from sqlalchemy import Column
-from sqlalchemy import Integer, String
+from sqlalchemy import Integer, String, FLOAT
 
 
 class DBConnection:
@@ -14,9 +14,12 @@ class DBConnection:
         metadata = MetaData(self.engine)                 
         Table("fundamental", metadata,
             Column('Id', Integer, primary_key=True, nullable=False), 
-            Column('whigh52', Integer),
+            Column('whigh52', FLOAT),
             Column('ticker', String),
             )
+
+        #TODO: remove this or extract into a new server method    
+        metadata.drop_all() 
         metadata.create_all()
         
 
