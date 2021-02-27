@@ -19,6 +19,8 @@ class DBConnection:
             Column('ticker', String),
             )
 
+        
+
         metadata.create_all()
         
 
@@ -28,6 +30,28 @@ class DBConnection:
         
         conn.execute("INSERT INTO fundamental (whigh52perc, ticker) VALUES ('"+ high52 +"', '" + ticker + "')")
         # Close connection
+        conn.close()
+
+
+    def InsertRevolutStockData(self, data):
+        self.engine.connect()       
+        metadata = MetaData(self.engine)      
+        revolutTickerTableName = "revolut_tickers"
+
+        metadata.drop_all(self.engine, [revolutTickerTableName])
+
+        Table(revolutTickerTableName, metadata,
+            Column('Id', Integer, primary_key=True, nullable=False), 
+            Column('ticker', String),
+            Column('name', String),
+            )
+
+        metadata.create_all()
+
+        conn = self.engine.connect()
+        for row in data:
+            conn.execute("INSERT INTO revolut_tickers (ticker, name) VALUES ('"+ row[1] +"', '" + row[0] + "')")
+            pass
         conn.close()
 
     def ClearDatabase(self):
