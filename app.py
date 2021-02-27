@@ -29,12 +29,12 @@ def myroute():
     for row in csv.reader(stream, dialect=csv.excel):
         if row:
             data.append(row)
-    csvResult = jsonify(data)
+    #csvResult = jsonify(data)
     
     db = DBConnection()
     db.InsertRevolutStockData(data)
 
-    return csvResult
+    return "Refresh complete"
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
