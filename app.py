@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return "<h1>Welcome to our server !!</h1>"
-"""
+
 @app.route('/load-fundamentals/', methods=['POST'])
 def scanFinvizTicker():
     ticker = request.args.get('ticker')
@@ -18,7 +18,7 @@ def scanFinvizTicker():
     db.InsertData(stockFundamental, ticker)
     db.ClearDatabase()
     return stockFundamental
-"""
+
 @app.route('/upload-revolut/', methods=['POST'])
 def revolut():
     return "res"
