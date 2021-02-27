@@ -39,8 +39,10 @@ class DBConnection:
         conn.close()
 
     def GetTitleByHash(self, headline_hash):
+        conn = self.engine.connect()
         t = text("SELECT * FROM headline_sentiment")
-        result = connection.execute(t)
+        result = conn.execute(t)
+        conn.close()
         return result
 
     def InsertData(self, fundamentalData, ticker):
