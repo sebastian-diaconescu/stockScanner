@@ -15,7 +15,7 @@ class FinVizHelper:
         r = requests.get(page)
         soup = BeautifulSoup(r.content, "html.parser")
         
-        newsTable = soup.find('table', id="news-table")
+        newsTable = soup.find(id="news-table")
         articleSoup = newsTable.findAll('tr')
         
         allArticles = []
