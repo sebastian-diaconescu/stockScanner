@@ -45,6 +45,10 @@ class DBConnection:
         
         res = result.first()
         conn.close()
+
+        if (res == None):
+            return []
+        
         return dict(res)
 
     def InsertData(self, fundamentalData, ticker):
