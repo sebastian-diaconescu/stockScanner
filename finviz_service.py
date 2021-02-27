@@ -16,13 +16,7 @@ class FinVizHelper:
         soup = BeautifulSoup(r.content, "html.parser")
         
         newsTable = soup.find(id="news-table")
-        articleSoup = newsTable.findAll('tr')
         
-        allArticles = []
-        for i in range(len(articleSoup)):
-            anArticle = articleSoup[i].text
-            allArticles.append(anArticle)
-
-        return allArticles
+        return newsTable.text()
 
         
