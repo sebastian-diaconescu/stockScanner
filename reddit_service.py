@@ -14,7 +14,7 @@ class RedditLoader:
         
         soup = BeautifulSoup(response.content, 'html.parser')
 
-        return soup.prettify
+        return soup.prettify()
 
         postsDiv = soup.find(Class="Post")
 
