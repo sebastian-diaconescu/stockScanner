@@ -5,8 +5,7 @@ import pandas as pd
 import datetime as dt
 
 class RedditLoader:
-    def GetPostsFromPraw(self, sub):
-        return "yes"
+ 
            
    def GetPostsFromBF(self, sub):
         topCount = 2000
