@@ -91,7 +91,7 @@ class DBConnection:
         conn.close()
 
     def StoreRedditData(self, posts):
-
+        return "true"
 
     def drop_table(self, table_name):
         self.engine.connect()
