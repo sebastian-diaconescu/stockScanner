@@ -30,13 +30,13 @@ class DBConnection:
             Column ("ticker", String, nullable=False)
         )     
 
-        Table("headline_sentiment", metadata,
+        Table("reddit", metadata,
             Column ("Id", Integer, primary_key=True, nullable=False),
             Column ("date", DateTime, nullable=False),
             Column ("title", String, nullable=False),
             Column ("content", String, nullable=False),
             Column ("sentiment_score", FLOAT),
-            Column ("tickers", String, nullable=False)
+            Column ("tickers", String),
             Column ("sub", String, nullable=False)
         )     
 
