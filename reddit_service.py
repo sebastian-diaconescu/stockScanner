@@ -24,7 +24,7 @@ class RedditLoader:
             res = []
             postContentDivs = postsDivs[i].find_all("div")
 
-            title = postsDivs[i].find("h3")
+            title = postsDivs[i].find("h3").text
             res.append({"title":title})
 
             if (postContentDivs != None):
