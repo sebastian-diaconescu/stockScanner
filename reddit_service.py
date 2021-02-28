@@ -7,8 +7,8 @@ import datetime as dt
 class RedditLoader:
     
     def GetPostsFromPraw(self, sub):
-        topCount = 2000
-        minNewsLength = 20
+        topCount = 20
+        minNewsLength = 100
 
         reddit = praw.Reddit(client_id='Av1qHSYv5QWzvg', \
                      client_secret='xcj2a0bZnuuMmEJl2fTwGipVzFgMMw', \
@@ -17,11 +17,12 @@ class RedditLoader:
                      password='asdxzc123#')
 
         subreddit = reddit.subreddit(sub)
-        new_subreddit = subreddit.new(limit=minNewsLength)
+        new_subreddit = subreddit.new(limit=2000)
         allNews = []
         for submission in new_subreddit:
-            res = {"title":submission.title, "news":submission.selftext}
-            allNews.append(res)
+            if (len(submission.selftext) > minNewsLength):
+                res = {"title":submission.title, "news":submission.selftext}
+                allNews.append(res)
 
         return allNews
            
