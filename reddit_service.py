@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 class RedditLoader:
    def GetPostsFrom(self, sub):
         topCount = 20
+        minNewsLength = 20
         pageURl = "https://www.reddit.com/r/" + sub + "/new"
 
         headers={'User-Agent': 'Mozilla/5.0'}
@@ -20,12 +21,10 @@ class RedditLoader:
 
         allArticles = []
         i = 0
-        while(i < len(postsDivs) and i < topCount):
-            res = []
-            
+        storedCount = 0
+        while(i < len(postsDivs) and storedCount < topCount):            
             title = postsDivs[i].find("h3").text
-            res.append({"title":title})
-
+            
             postContents = postsDivs[i].find_all("p")
             if (postContents != None):
                 content = ""
@@ -36,6 +35,10 @@ class RedditLoader:
 
                 res.append({"news":content})
                 allArticles.append(res)
+
+            if (len(news) > minNewsLength):
+                res = {"title":title, "news":news}
+                storedCount = storedCount + 1
             
             i = i + 1                      
 
