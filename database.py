@@ -104,6 +104,7 @@ class DBConnection:
         
         # Close connection
         conn.close()
+        return posts
 
     def drop_table(self, table_name):
         self.engine.connect()
