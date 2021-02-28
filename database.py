@@ -92,8 +92,6 @@ class DBConnection:
 
     def InsertRedditData(self, posts):
         conn = self.engine.connect()
-        high52 = fundamentalData["52W High"].replace("%", "")
-        
         for post in posts:
             conn.execute("INSERT INTO reddit (date, title, content, sub)" + 
             " VALUES " + 
