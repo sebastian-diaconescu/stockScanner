@@ -74,8 +74,8 @@ def loadReddit():
      posts = redditLoader.GetPostsFromPraw(sub)
      db = DBConnection()
      db.createTables()
-     db.InsertRedditData(posts)
-     return jsonify(posts)
+     res = db.InsertRedditData(posts)
+     return res
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
