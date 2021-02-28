@@ -23,7 +23,7 @@ class RedditLoader:
 
         while(i<len(postsDiv) and i < topCount):
             res = []
-            postContentDivs = postsDiv.find("div")
+            postContentDivs = postsDiv.find_all("div")
             if (postContentDivs != None):
                 for i in range (postContentDivs.len):
                     divText = postContentDivs[i].text
