@@ -95,7 +95,7 @@ class DBConnection:
         for post in posts:
             conn.execute("INSERT INTO reddit (date, title, content, sub)" + 
             " VALUES " + 
-            "('"+ post['date'] +"', '" + post['title'] +"', '" + post['content'] + "', '" + post['sub'] + "')")
+            "('"+ str(post['date']) +"', '" + post['title'] +"', '" + post['content'] + "', '" + post['sub'] + "')")
             pass
 
         
