@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 class RedditLoader:
    def GetPostsFrom(self, sub):
-        topCount = 5
+        topCount = 20
         pageURl = "https://www.reddit.com/r/" + sub + "/new"
 
         headers={'User-Agent': 'Mozilla/5.0'}
@@ -13,20 +13,19 @@ class RedditLoader:
             return "no response from page " + response.status_code
         
         soup = BeautifulSoup(response.content, 'html.parser')
-        postsDivs = soup.find_all("div", {"class": "Post"})
-
-        allArticles = []
-        i = 0
+        postsDivs = soup.find_all("div", {"class": "Post"})      
 
         if (postsDivs == None):
             return []
 
-        while(i<len(postsDivs) and i < topCount):
+        allArticles = []
+        i = 0
+        while(i < len(postsDivs) and i < topCount):
             res = []
             postContentDivs = postsDivs[i].find_all("div")
             if (postContentDivs != None):
-                for i in range (len(postContentDivs)):
-                    divText = postContentDivs[i].text
+                for j in range (len(postContentDivs)):
+                    divText = postContentDivs[j].text
                     res.append(divText)
                     pass
                 allArticles.append(res)
