@@ -96,6 +96,8 @@ class DBConnection:
         for post in posts:
             content = post['content'].replace("'", "")
             title = post['title'].replace("'","")
+            content = "test"
+            title = "test"
             insert = "INSERT INTO reddit (date, title, content, sub)" + " VALUES " + "('"+ str(post['date']) +"', '" +  title +"', '" + content + "', '" + post['sub'] + "')"
             conn.execute(insert)
             pass
