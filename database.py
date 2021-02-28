@@ -4,7 +4,7 @@ from sqlalchemy import Table
 from sqlalchemy import Column
 from sqlalchemy import Integer, String, FLOAT, DateTime, text
 from sqlalchemy.ext.declarative import declarative_base
-
+import re
 
 class DBConnection:
     def __init__(self):      
@@ -93,11 +93,12 @@ class DBConnection:
     def InsertRedditData(self, posts):
         conn = self.engine.connect()
         
+
         for post in posts:
             content = post['content'].replace("'", "")
             title = post['title'].replace("'","")
-            content = "test"
-            title = "test"
+            content = re.sub(r'\W+', '', content)
+            title = re.sub(r'\W+', '', title)
             insert = "INSERT INTO reddit (date, title, content, sub)" + " VALUES " + "('"+ str(post['date']) +"', '" +  title +"', '" + content + "', '" + post['sub'] + "')"
             conn.execute(insert)
             pass
