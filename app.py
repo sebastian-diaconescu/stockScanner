@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from finviz_service import FinVizHelper
 from database import DBConnection
 from sentiment_scanner import SentimentScaner
+from reddit_service import RedditLoader
 import csv
 import codecs
 app = Flask(__name__)
