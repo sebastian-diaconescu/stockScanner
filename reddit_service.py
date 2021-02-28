@@ -22,16 +22,19 @@ class RedditLoader:
         i = 0
         while(i < len(postsDivs) and i < topCount):
             res = []
-            postContentDivs = postsDivs[i].find_all("div")
-
+            
             title = postsDivs[i].find("h3").text
             res.append({"title":title})
 
-            if (postContentDivs != None):
-                for j in range (len(postContentDivs)):
+            postContents = postsDivs[i].find_all("p")
+            if (postContents != None):
+                content = ""
+                for j in range (len(postContents)):
                     divText = postContentDivs[j].text
-                    res.append(divText)
+                    content += divText
                     pass
+                
+                res.append({"news":content})
                 allArticles.append(res)
             
             i = i + 1                      
