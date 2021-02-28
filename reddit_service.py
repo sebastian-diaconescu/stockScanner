@@ -31,14 +31,12 @@ class RedditLoader:
                 for j in range (len(postContents)):
                     divText = postContents[j].text
                     content += divText
-                    pass
-
-                res.append({"news":content})
-                allArticles.append(res)
+                    pass 
 
             if (len(news) > minNewsLength):
                 res = {"title":title, "news":news}
                 storedCount = storedCount + 1
+                allArticles.append(res)
             
             i = i + 1                      
 
