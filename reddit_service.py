@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 class RedditLoader:
    def GetPostsFrom(self, sub):
-        topCount = 20
+        topCount = 2000
         minNewsLength = 20
         pageURl = "https://www.reddit.com/r/" + sub + "/new"
 
