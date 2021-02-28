@@ -75,8 +75,9 @@ def loadReddit():
      db = DBConnection()
      db.drop_table("reddit")
      db.createTables()
-     res = db.InsertRedditData(posts)
-     return jsonify(res)
+     #res = db.InsertRedditData(posts)
+     #return jsonify(res)
+     return "done"
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
