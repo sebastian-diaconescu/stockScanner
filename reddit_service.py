@@ -22,6 +22,7 @@ class RedditLoader:
         allArticles = []
         i = 0
         storedCount = 0
+        return len(postsDivs)
         while(i < len(postsDivs) and storedCount < topCount):            
             title = postsDivs[i].find("h3").text
             
