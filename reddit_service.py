@@ -25,7 +25,7 @@ class RedditLoader:
             res = []
             postContentDivs = postsDivs[i].find_all("div")
             if (postContentDivs != None):
-                for i in range (postContentDivs.len):
+                for i in range (len(postContentDivs)):
                     divText = postContentDivs[i].text
                     res.append(divText)
                     pass
