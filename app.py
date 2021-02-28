@@ -18,7 +18,7 @@ def scanFinvizTicker():
     db = DBConnection()
     db.createTables()
     db.InsertData(stockFundamental, ticker)
-    db.ClearDatabase()
+    
     return stockFundamental
 
 @app.route('/upload-revolut', methods=['POST'])
@@ -73,9 +73,9 @@ def loadReddit():
      #posts = redditLoader.GetPostsFromBF(sub)
      posts = redditLoader.GetPostsFromPraw(sub)
      db = DBConnection()
-     db.ClearDatabase()
+     
      db.createTables()
-     #db.StoreRedditData(posts)
+     db.InsertRedditData(posts)
      return jsonify(posts)
 
 if __name__ == '__main__':

@@ -21,7 +21,7 @@ class RedditLoader:
         allNews = []
         for submission in new_subreddit:
             if (len(submission.selftext) > minNewsLength):
-                res = {"title":submission.title, "news":submission.selftext, "subreddit":sub, "date":self.get_date(submission.created)}
+                res = {"title":submission.title, "content":submission.selftext, "sub":sub, "date":self.get_date(submission.created)}
                 allNews.append(res)
 
         return allNews

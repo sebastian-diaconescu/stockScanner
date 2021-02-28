@@ -90,8 +90,17 @@ class DBConnection:
             pass
         conn.close()
 
-    def StoreRedditData(self, posts):
-        return "true"
+    def InsertRedditData(self, posts):
+        conn = self.engine.connect()
+        high52 = fundamentalData["52W High"].replace("%", "")
+        
+        for post in posts:
+            conn.execute("INSERT INTO reddit (date, title, content) VALUES ('"+ high52 +"', '" + ticker + "')")
+            pass
+
+        
+        # Close connection
+        conn.close()
 
     def drop_table(self, table_name):
         self.engine.connect()
