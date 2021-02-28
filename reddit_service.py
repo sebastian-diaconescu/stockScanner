@@ -13,17 +13,17 @@ class RedditLoader:
             return "no response from page " + response.status_code
         
         soup = BeautifulSoup(response.content, 'html.parser')
-        postsDiv = soup.find_all("div", {"class": "Post"})
+        postsDivs = soup.find_all("div", {"class": "Post"})
 
         allArticles = []
         i = 0
 
-        if (postsDiv == None):
+        if (postsDivs == None):
             return []
 
-        while(i<len(postsDiv) and i < topCount):
+        while(i<len(postsDivs) and i < topCount):
             res = []
-            postContentDivs = postsDiv.find_all("div")
+            postContentDivs = postsDivs[i].find_all("div")
             if (postContentDivs != None):
                 for i in range (postContentDivs.len):
                     divText = postContentDivs[i].text
