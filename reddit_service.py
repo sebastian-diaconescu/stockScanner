@@ -21,11 +21,14 @@ class RedditLoader:
         allNews = []
         for submission in new_subreddit:
             if (len(submission.selftext) > minNewsLength):
-                res = {"title":submission.title, "news":submission.selftext}
+                res = {"title":submission.title, "news":submission.selftext, "subreddit":sub, "date":get_date(submission.created)}
                 allNews.append(res)
 
         return allNews
-           
+    
+    def get_date(created):
+        return dt.datetime.fromtimestamp(created)
+
     def GetPostsFromBF(self, sub):
         topCount = 2000
         minNewsLength = 20

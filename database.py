@@ -28,7 +28,17 @@ class DBConnection:
             Column ("headline_hash", String, nullable=False),
             Column ("sentiment_score", FLOAT),
             Column ("ticker", String, nullable=False)
-        )       
+        )     
+
+        Table("headline_sentiment", metadata,
+            Column ("Id", Integer, primary_key=True, nullable=False),
+            Column ("date", DateTime, nullable=False),
+            Column ("title", String, nullable=False),
+            Column ("content", String, nullable=False),
+            Column ("sentiment_score", FLOAT),
+            Column ("tickers", String, nullable=False)
+            Column ("sub", String, nullable=False)
+        )     
 
         metadata.create_all()
         
@@ -79,6 +89,9 @@ class DBConnection:
             conn.execute("INSERT INTO revolut_tickers (ticker, name) VALUES ('"+ row[1] +"', '" + row[0] + "')")
             pass
         conn.close()
+
+    def StoreRedditData(self, posts):
+
 
     def drop_table(self, table_name):
         self.engine.connect()
