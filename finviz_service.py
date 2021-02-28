@@ -12,7 +12,7 @@ class FinVizHelper:
     def loadNews(self, ticker):
         #url = "https://finviz.com/quote.ashx?t="
         #page = url + ticker
-        pageURl = "https://finviz.com/quote.ashx?t=gme"
+        pageURl = "https://finviz.com/quote.ashx?t=" + ticker
         #TODO: use random list of useragents 
         headers={'User-Agent': 'Mozilla/5.0'}
         #TODO: move this into a method to optimize number of calls to finviz

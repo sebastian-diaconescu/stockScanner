@@ -67,6 +67,14 @@ def loadSentiment():
 
     #return "loaded sentiments"
 
+@app.route('/load-reddit-posts', methods['Post'])
+def loadReddit():
+     sub = request.args.get('sub')
+     redditLoader = RedditLoader()
+     posts = redditLoader.GetPostsFrom(sub)
+
+     return jsonify(posts)
+
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
     app.run(threaded=True, port=5000)
