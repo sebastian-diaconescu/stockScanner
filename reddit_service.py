@@ -13,9 +13,6 @@ class RedditLoader:
             return "no response from page " + response.status_code
         
         soup = BeautifulSoup(response.content, 'html.parser')
-
-        return soup.prettify()
-
         postsDiv = soup.find_all("div", {"class": "Post"})
 
         allArticles = []
