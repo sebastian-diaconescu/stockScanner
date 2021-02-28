@@ -1,8 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
+import praw
+import pandas as pd
+import datetime as dt
 
 class RedditLoader:
-   def GetPostsFrom(self, sub):
+   def GetPostsFromBF(self, sub):
         topCount = 2000
         minNewsLength = 20
         pageURl = "https://www.reddit.com/r/" + sub + "/new"
@@ -42,3 +45,7 @@ class RedditLoader:
             i = i + 1                      
 
         return allArticles
+
+    def GetPostsFromPraw(self, sub):
+        return "yes"
+        pass
