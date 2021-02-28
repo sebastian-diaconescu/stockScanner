@@ -73,7 +73,6 @@ def loadReddit():
      #posts = redditLoader.GetPostsFromBF(sub)
      posts = redditLoader.GetPostsFromPraw(sub)
      db = DBConnection()
-     
      db.createTables()
      db.InsertRedditData(posts)
      return jsonify(posts)

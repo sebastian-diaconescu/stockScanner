@@ -95,7 +95,9 @@ class DBConnection:
         high52 = fundamentalData["52W High"].replace("%", "")
         
         for post in posts:
-            conn.execute("INSERT INTO reddit (date, title, content) VALUES ('"+ high52 +"', '" + ticker + "')")
+            conn.execute("INSERT INTO reddit (date, title, content, sub)" + 
+            " VALUES " + 
+            "('"+ post['date'] +"', '" + post['title'] +"', '" + post['content'] + "', '" + post['sub'] + "')")
             pass
 
         
