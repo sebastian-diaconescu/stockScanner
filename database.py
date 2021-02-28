@@ -93,10 +93,7 @@ class DBConnection:
     def InsertRedditData(self, posts):
         conn = self.engine.connect()
         for post in posts:
-            conn.execute("INSERT INTO reddit (date, title, content, sub)" + 
-            " VALUES " + 
-            "('"+ str(post['date']) +"', '" + post['title'] +"', '" + post['content'] + "', '" + post['sub'] + "')")
-            pass
+            return post
 
         
         # Close connection
