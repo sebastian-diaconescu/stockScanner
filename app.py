@@ -63,11 +63,9 @@ def loadSentiment():
         pass
 
     return jsonify(data)
-    #return jsonify(data)
 
-    #return "loaded sentiments"
 
-@app.route('/load-reddit-posts', methods['Post'])
+@app.route('/load-reddit-posts', methods=['POST'])
 def loadReddit():
      sub = request.args.get('sub')
      redditLoader = RedditLoader()
