@@ -30,10 +30,10 @@ class RedditLoader:
             if (postContents != None):
                 content = ""
                 for j in range (len(postContents)):
-                    divText = postContentDivs[j].text
+                    divText = postContents[j].text
                     content += divText
                     pass
-                
+
                 res.append({"news":content})
                 allArticles.append(res)
             
