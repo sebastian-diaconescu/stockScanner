@@ -18,15 +18,19 @@ class RedditLoader:
         allArticles = []
         i = 0
 
+        if (postsDiv == None):
+            return []
+
         while(i<len(postsDiv) and i < topCount):
             res = []
             postContentDivs = postsDiv.find("div")
-            for i in range (postContentDivs.len):
-                divText = postContentDivs[i].text
-                res.append(divText)
-                pass
+            if (postContentDivs != None):
+                for i in range (postContentDivs.len):
+                    divText = postContentDivs[i].text
+                    res.append(divText)
+                    pass
+                allArticles.append(res)
             
-            i = i + 1           
-            allArticles.append(divText)
+            i = i + 1                      
 
         return allArticles
