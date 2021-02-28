@@ -33,8 +33,8 @@ class RedditLoader:
                     content += divText
                     pass 
 
-            if (len(news) > minNewsLength):
-                res = {"title":title, "news":news}
+            if (len(content) > minNewsLength):
+                res = {"title":title, "news":content}
                 storedCount = storedCount + 1
                 allArticles.append(res)
             
