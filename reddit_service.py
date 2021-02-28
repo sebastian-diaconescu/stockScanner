@@ -5,9 +5,11 @@ import pandas as pd
 import datetime as dt
 
 class RedditLoader:
- 
+    
+    def GetPostsFromPraw(self, sub):
+        return "yes"
            
-   def GetPostsFromBF(self, sub):
+    def GetPostsFromBF(self, sub):
         topCount = 2000
         minNewsLength = 20
         pageURl = "https://www.reddit.com/r/" + sub + "/new"

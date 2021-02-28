@@ -70,8 +70,8 @@ def loadSentiment():
 def loadReddit():
      sub = request.args.get('sub')
      redditLoader = RedditLoader()
-     posts = redditLoader.GetPostsFromBF(sub)
-     #posts = redditLoader.GetPostsFromPraw(sub)
+     #posts = redditLoader.GetPostsFromBF(sub)
+     posts = redditLoader.GetPostsFromPraw(sub)
 
      return jsonify(posts)
 
