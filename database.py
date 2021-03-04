@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy import MetaData
 from sqlalchemy import Table
 from sqlalchemy import Column
-from sqlalchemy import Integer, String, FLOAT, DateTime, text
+from sqlalchemy import Integer, String, FLOAT, DateTime, text, UniqueConstraint
 from sqlalchemy.ext.declarative import declarative_base
 import re
 
@@ -78,15 +78,17 @@ class DBConnection:
 
         Table(revolutTickerTableName, metadata,
             Column('Id', Integer, primary_key=True, nullable=False), 
-            Column('ticker', String),
+            Column('ticker', String, unique=True),
             Column('name', String),
+            Column('sector', String),
+            Column('industry', String)
             )
 
         metadata.create_all()
 
         conn = self.engine.connect()
         for row in data:
-            conn.execute("INSERT INTO revolut_tickers (ticker, name) VALUES ('"+ row[1] +"', '" + row[0] + "')")
+            conn.execute("INSERT INTO revolut_tickers (name, ticker,  sector, industry) VALUES ('"+ row[0] +"', '" + row[1] + "', '" + row[2] + "', '" + row[3] + "') ON CONFLICT (ticker) DO NOTHING;")
             pass
         conn.close()
 
