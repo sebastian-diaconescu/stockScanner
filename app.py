@@ -3,6 +3,7 @@ from finviz_service import FinVizHelper
 from database import DBConnection
 from sentiment_scanner import SentimentScaner
 from reddit_service import RedditLoader
+from Utils import Utils
 import csv
 import codecs
 app = Flask(__name__)
@@ -43,25 +44,30 @@ def loadSentiment():
     db = DBConnection()
     db.createTables()
 
-    db.InsertHeadlineSentiment("Feb-26-21 04:05PM", "test headline", "1hash", "1", "gme")
-    data = db.GetTitleByHash("1has2h")
-
+    
     finvizHelper = FinVizHelper()
-    #news = finvizHelper.loadNews("gme")
-    news = finvizHelper.mockLoadNews("gme")
+    news = finvizHelper.loadNews(ticker)
+    #news = finvizHelper.mockLoadNews("gme")
     data = []
     sentimentScaner = SentimentScaner()
     for story in news:
-        
         split = story.split("  ")
         date = split[0]
         title = split[1]
-        res = {"date":date, "title": title, "score": "", "ticker":ticker }
+        sentimentScore = sentimentScaner.GetSentiment(title)
+        res = {"date":date, "title": title, "score": sentimentScore, "ticker":ticker }
+        hashVal = Utils.GetHash(title)
         
-        res["score"] = sentimentScaner.GetSentiment(title)
+
+        data = db.GetTitleByHash(hashVal)
+        if (data == None):
+            db.InsertHeadlineSentiment(date, title, hashVal, sentimentScore, ticker)
+        
 
         data.append(res)
         pass
+
+
 
     return jsonify(data)
 

@@ -57,7 +57,7 @@ class DBConnection:
         conn.close()
 
         if (res == None):
-            return []
+            return None
         
         return dict(res)
 
