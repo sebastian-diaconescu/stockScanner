@@ -60,8 +60,8 @@ def loadSentiment():
         #hashVal = hashlib.md5(title.encode('utf-8')).hexdigest() 
         hashVal = "abc"
 
-        data = db.GetTitleByHash(hashVal)
-        if (data == None):
+        existingRow = db.GetTitleByHash(hashVal)
+        if (existingRow == None):
             db.InsertHeadlineSentiment(date, title, hashVal, sentimentScore, ticker)
             res = {"date":date, "title": title, "score": sentimentScore, "ticker":ticker }
             data.append(res)
