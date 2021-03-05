@@ -57,11 +57,12 @@ def loadSentiment():
         date = split[0]
         title = split[1]
         sentimentScore = sentimentScaner.GetSentiment(title)
-        hashVal = hashlib.md5(title.encode('utf-8')).hexdigest() 
+        #hashVal = hashlib.md5(title.encode('utf-8')).hexdigest() 
+        hashVal = "abc"
 
         data = db.GetTitleByHash(hashVal)
         if (data == None):
-            return db.InsertHeadlineSentiment(date, title, hashVal, sentimentScore, ticker)
+            db.InsertHeadlineSentiment(date, title, hashVal, sentimentScore, ticker)
             res = {"date":date, "title": title, "score": sentimentScore, "ticker":ticker }
             data.append(res)
         
