@@ -61,7 +61,7 @@ def loadSentiment():
 
         data = db.GetTitleByHash(hashVal)
         if (data == None):
-            db.InsertHeadlineSentiment(date, title, hashVal, sentimentScore, ticker)
+            return db.InsertHeadlineSentiment(date, title, hashVal, sentimentScore, ticker)
             res = {"date":date, "title": title, "score": sentimentScore, "ticker":ticker }
             data.append(res)
         
