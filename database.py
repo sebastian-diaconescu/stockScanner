@@ -45,8 +45,7 @@ class DBConnection:
     def InsertHeadlineSentiment(self, date, headline, headline_hash, sentiment_score, ticker):
         conn = self.engine.connect()
 
-        insert = "INSERT INTO headline_sentiment (date, headline, headline_hash, sentiment_score, ticker)" + 
-        "Values ('"+ str(date) + "', '" + headline + "', '" + headline_hash + "', '" + str(sentiment_score) + "', '" + ticker + "')"
+        insert = "INSERT INTO headline_sentiment (date, headline, headline_hash, sentiment_score, ticker) Values ('"+ str(date) + "', '" + headline + "', '" + headline_hash + "', '" + str(sentiment_score) + "', '" + ticker + "')"
 
         return insert
 
