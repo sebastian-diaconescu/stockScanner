@@ -44,6 +44,7 @@ class DBConnection:
         
     def InsertHeadlineSentiment(self, date, headline, headline_hash, sentiment_score, ticker):
         conn = self.engine.connect()
+        self.drop_table("headline_sentiment")
 
         headline = re.sub(r'[^a-zA-Z0-9\.\, ]+', '', headline)
         insert = "INSERT INTO headline_sentiment (date, headline, headline_hash, sentiment_score, ticker) Values ('"+ str(date) + "', '" + headline + "', '" + headline_hash + "', '" + str(sentiment_score) + "', '" + ticker + "')"

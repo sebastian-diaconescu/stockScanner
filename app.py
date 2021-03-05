@@ -3,7 +3,7 @@ from finviz_service import FinVizHelper
 from database import DBConnection
 from sentiment_scanner import SentimentScaner
 from reddit_service import RedditLoader
-
+import datetime as dt
 import hashlib
 import csv
 import codecs
@@ -61,6 +61,8 @@ def loadSentiment():
 
         existingRow = db.GetTitleByHash(hashVal)
         if (existingRow == None):
+            if (len(date) < 9):
+                date = dt.datetime.now()
             db.InsertHeadlineSentiment(date, title, hashVal, sentimentScore, ticker)
             res = {"date":date, "title": title, "score": sentimentScore, "ticker":ticker }
             data.append(res)
