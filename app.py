@@ -57,8 +57,7 @@ def loadSentiment():
         date = split[0]
         title = split[1]
         sentimentScore = sentimentScaner.GetSentiment(title)
-        #hashVal = hashlib.md5(title.encode('utf-8')).hexdigest() 
-        hashVal = "abc"
+        hashVal = hashlib.md5(title.encode('utf-8')).hexdigest() 
 
         existingRow = db.GetTitleByHash(hashVal)
         if (existingRow == None):
