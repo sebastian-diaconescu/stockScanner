@@ -44,6 +44,8 @@ def loadRevolut():
 def loadSentiment():
     ticker = request.args.get('ticker')
     db = DBConnection()
+    
+    db.drop_table("headline_sentiment")
     db.createTables()
 
     
