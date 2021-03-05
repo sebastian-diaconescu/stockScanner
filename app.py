@@ -3,9 +3,11 @@ from finviz_service import FinVizHelper
 from database import DBConnection
 from sentiment_scanner import SentimentScaner
 from reddit_service import RedditLoader
-from Utils import Utils
+
+import hashlib
 import csv
 import codecs
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -56,8 +58,7 @@ def loadSentiment():
         title = split[1]
         sentimentScore = sentimentScaner.GetSentiment(title)
         res = {"date":date, "title": title, "score": sentimentScore, "ticker":ticker }
-        hashVal = Utils.GetHash(title)
-        
+        hashVal = hashlib.md5(title) 
 
         data = db.GetTitleByHash(hashVal)
         if (data == None):
