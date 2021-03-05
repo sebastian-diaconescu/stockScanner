@@ -73,7 +73,8 @@ def loadSentiment():
 
 
 
-    return jsonify(data)
+    #return jsonify(data)
+    return "loaded ticker" + ticker
 
 
 @app.route('/load-reddit-posts', methods=['POST'])
