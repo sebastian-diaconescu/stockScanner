@@ -58,7 +58,7 @@ def loadSentiment():
         title = split[1]
         sentimentScore = sentimentScaner.GetSentiment(title)
         res = {"date":date, "title": title, "score": sentimentScore, "ticker":ticker }
-        hashVal = hashlib.md5(title.encode('utf-8')) 
+        hashVal = hashlib.md5(title.encode('utf-8')).hexdigest() 
 
         data = db.GetTitleByHash(hashVal)
         if (data == None):
